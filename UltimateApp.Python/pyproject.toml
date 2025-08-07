@@ -9,18 +9,24 @@ dependencies = [
     "uvicorn[standard]>=0.35.0",
 ]
 
-[project.optional-dependencies]
-dev = ["ruff"]
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
+    "ruff>=0.5.0",
     "ty>=0.0.1a17",
+    "pytest>=8.3",
+    "pytest-ty>=0.1.0",
+    "httpx>=0.28.1",
 ]
-test = ["httpx>=0.28.1", "pytest>=8.3.5"]
+test = []
 
 [tool.pytest.ini_options]
 markers = ["slow: marks tests as slow (deselect with '-m \"not slow\"')"]
 python_files = ["test_*.py", "*_test.py", "tests.py"]
+addopts = "--ty -q"
 
 # Ruff: linter and formatter configuration
 # Docs: https://docs.astral.sh/ruff/configuration/
@@ -53,4 +59,4 @@ indent-style = "space"
 line-ending = "auto"
 
 [tool.ty.environment]
-root = ["./src"]
+root = ["src"]
