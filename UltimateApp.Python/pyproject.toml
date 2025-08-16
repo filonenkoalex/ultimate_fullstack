@@ -28,8 +28,7 @@ dev = [
 ]
 
 [project.scripts]
-app = "ultimateapp.main:main"
-serve = "ultimateapp.main:main"
+serve = "main:start"
 lint = "ultimateapp.cli:run_lint"
 typecheck = "ultimateapp.cli:run_typecheck"
 test = "ultimateapp.cli:run_tests"
