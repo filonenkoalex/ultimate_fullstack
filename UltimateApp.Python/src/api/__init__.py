@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from api.routers.v1 import router as main_router
+from api.routers import router as aggregated_router
 
 app = FastAPI()
-app.include_router(main_router)
+app.include_router(aggregated_router)
