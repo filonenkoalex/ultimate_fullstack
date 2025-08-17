@@ -18,20 +18,20 @@ dependencies = [
     "uvicorn[standard]>=0.35.0",
 ]
 
-[project.optional-dependencies]
-dev = [
-    "ruff",
-    "ty",
-    "pytest",
-    "pytest-asyncio",
-    "pytest-ty"
-]
-
 [project.scripts]
 serve = "main:start"
 lint = "ultimateapp.cli:run_lint"
 typecheck = "ultimateapp.cli:run_typecheck"
 test = "ultimateapp.cli:run_tests"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+    "pytest-asyncio>=1.1.0",
+    "pytest-ty>=0.1.2",
+    "ruff>=0.12.8",
+    "ty>=0.0.1a17",
+]
 
 [tool.ruff]
 extend = "ruff.toml"
