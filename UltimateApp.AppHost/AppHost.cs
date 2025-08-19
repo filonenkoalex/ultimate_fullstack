@@ -21,10 +21,10 @@ builder.AddNpmApp("web", "../UltimateApp.WebApp")
     .PublishAsDockerFile();
 
 #pragma warning disable ASPIREHOSTINGPYTHON001
-builder.AddUvicornApp("python", "../UltimateApp.Python", "main:app")
+builder.AddUvicornApp("python", "../UltimateApp.Python", "run serve")
 #pragma warning restore ASPIREHOSTINGPYTHON001
     .WithExternalHttpEndpoints()
     .WithHttpEndpoint(env: "UVICORN_PORT")
-    .WithHttpHealthCheck("/health");
+    .WithHttpHealthCheck("/v1/health");
 
 builder.Build().Run();
