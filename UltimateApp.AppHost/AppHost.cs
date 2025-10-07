@@ -13,7 +13,7 @@ builder.AddProject<Projects.UltimateApp_Web>("webfrontend")
     .WithReference(apiService)
     .WaitFor(apiService);
 
-builder.AddNpmApp("web", "../UltimateApp.WebApp")
+builder.AddNpmApp("react", "../UltimateApp.WebApp")
     .WithReference(apiService)
     .WaitFor(apiService)
     .WithHttpEndpoint(env: "VITE_PORT")
@@ -21,7 +21,7 @@ builder.AddNpmApp("web", "../UltimateApp.WebApp")
     .PublishAsDockerFile();
 
 #pragma warning disable ASPIREHOSTINGPYTHON001
-builder.AddUvicornApp("python", "../UltimateApp.Python", "run serve")
+builder.AddUvApp("python", "../UltimateApp.Python", "serve")
 #pragma warning restore ASPIREHOSTINGPYTHON001
     .WithExternalHttpEndpoints()
     .WithHttpEndpoint(env: "UVICORN_PORT")
